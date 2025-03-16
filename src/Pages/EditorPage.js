@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState ,useRef} from 'react';
 import Client from '../Components/Client';
 import Editor from '../Components/Editor';
+import { initSocket } from '../socket';
+// import ACTIONS from '../../actions';
+import { useLocation } from 'react-router-dom';
+
 
 const EditorPage = () => {
+  const socketRef = useRef(null);
+  const location = useLocation();
+  useEffect(()=>{
+    const init = async ()=>{
+      socketRef.current = await initSocket(); 
+      // socketRef.current.emit(ACTIONS.JOIN,{
+      //   roomId,
+      //   username: location.state?.userName,
+      // });
+    }
+    init();
+  },[]);
   const [clients, setClients] = useState([
-    { socketId: 1, username: 'Amit' },
-    { socketId: 2, username: 'Harish' },
+    { socketId: 1, userName: 'amit kumar' },
+    { socketId: 2, userName: 'harish singh' },
   ]);
 
   return (
@@ -32,7 +48,7 @@ const EditorPage = () => {
           <h5>Connected Users</h5>
           <ul id="connectedUsers" className="list-group">
             {clients.map((client) => {
-              return <Client username={client.username} key={client.socketId} className='list-group-item' />;
+              return <Client username={client.userName} key={client.socketId} className='list-group-item' />;
             })}
           </ul>
         </div>
