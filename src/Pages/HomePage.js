@@ -11,10 +11,11 @@ const HomePage = () => {
     e.preventDefault();
     const id = uuid();
     setroomId(id);
-    console.log(roomId);
+    toast.success('Creted a New Room')
   }
-  const joinRoom = ()=>{
+  const joinRoom = (e)=>{
     if(!roomId || !userName){
+      e.preventDefault();
       toast.error('All Fields Are Necessary')
       return;
     }
@@ -33,9 +34,9 @@ const HomePage = () => {
           <form >
             <div className="form" >
               <label htmlFor="email">Email Address</label>
-              <input type="username" id="username" required name="username" placeholder="Enter User Name" onChange={(e) => setuserName(e.target.value)} value={userName}/>
+              <input type="name"  placeholder="Enter User Name" onChange={(e) => setuserName(e.target.value)} value={userName}/>
               <label htmlFor="roomId">Room Id</label>
-              <input type="text" id="roomId"  required name="roomId" placeholder="Enter Room Id" value={roomId} onChange={(e)=> setroomId(e.target.value)}/>
+              <input type="text"  placeholder="Enter Room Id" value={roomId} onChange={(e)=> setroomId(e.target.value)}/>
               <button className='joinRoom' onClick={joinRoom}>Join</button>
             </div>
           </form>
