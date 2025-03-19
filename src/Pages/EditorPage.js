@@ -36,9 +36,9 @@ const EditorPage = () => {
     { socketId: 2, userName: 'harish singh' },
   ]);
 
-  if(!location.state){
-    return <Navigate to='/'/>
-  }
+  // if(!location.state){
+  //   return <Navigate to='/'/>
+  // }
 
 
   return (
