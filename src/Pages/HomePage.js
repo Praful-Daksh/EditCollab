@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [roomId,setroomId] = useState('');
-  const [userName,setuserName] = useState('');
+  let [roomId,setroomId] = useState('');
+  let [userName,setuserName] = useState('');
   const createNewRoom = (e)=>{
     e.preventDefault();
     const id = uuid();
@@ -18,10 +18,10 @@ const HomePage = () => {
       e.preventDefault();
       toast.error('All Fields Are Necessary')
       return;
-    }
+    }else
     navigate(`/editor/${roomId}`,{
       state:{
-        userName,
+        userName
       }
     })
   }

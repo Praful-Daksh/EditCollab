@@ -12,7 +12,7 @@ const EditorPage = () => {
   const socketRef = useRef(null)
   const location = useLocation()
   const reactNavigator = useNavigate()
-  const params = useParams()
+  const roomId = useParams()
   useEffect(()=>{
     const init = async ()=>{
       socketRef.current = await initSocket(); 
@@ -24,8 +24,8 @@ const EditorPage = () => {
         reactNavigator('/')
         toast.error('Connection failed, try again later')
       }
-      socketRef.current.emit(ACTIONS.JOIN,{
-        // roomId,
+      socketRef.current.emit(ACTIONS.JOIN,{   
+        roomId,
         username: location.state?.userName,
       });
     }
