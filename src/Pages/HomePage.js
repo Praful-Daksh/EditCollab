@@ -19,6 +19,7 @@ const HomePage = () => {
       toast.error('All Fields Are Necessary')
       return;
     }else
+    console.log(userName)
     navigate(`/editor/${roomId}`,{
       state:{
         userName
@@ -34,10 +35,10 @@ const HomePage = () => {
           <form >
             <div className="form" >
               <label htmlFor="email">Email Address</label>
-              <input type="name"  placeholder="Enter User Name" onChange={(e) => setuserName(e.target.value)} value={userName}/>
+              <input type="text"  placeholder="Enter User Name" onChange={(e) => setuserName(e.target.value)} value={userName}/>
               <label htmlFor="roomId">Room Id</label>
               <input type="text"  placeholder="Enter Room Id" value={roomId} onChange={(e)=> setroomId(e.target.value)}/>
-              <button className='joinRoom' onClick={joinRoom}>Join</button>
+              <button className='joinRoom' onClick={joinRoom} type='submit'>Join</button>
             </div>
           </form>
         </div>
